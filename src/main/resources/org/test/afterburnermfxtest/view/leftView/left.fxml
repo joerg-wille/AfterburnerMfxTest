@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="leftView" fx:id="leftView" prefHeight="100.0" prefWidth="100.0" styleClass="leftView" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.test.afterburnermfxtest.view.leftView.LeftController">
+    <stylesheets>
+        <URL value="@left.css" />
+    </stylesheets>
+   <children>
+   </children>
+</Pane>

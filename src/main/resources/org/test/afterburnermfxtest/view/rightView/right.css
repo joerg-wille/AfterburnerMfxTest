@@ -1,0 +1,9 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.rightView {
+    -fx-background-color: yellow;
+    -fx-background-radius: 6;
+    -fx-background-insets: 10;
+}

@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.javafxports:jfxmobile-plugin:1.0.1'
+    }
+}
+
+apply plugin: 'org.javafxports.jfxmobile'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // config me.tatarka:gradle-retrolambda, which is used in jfxmobile-plugin,
+    // to use retrolamda version 2.0.6
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.6'
+    
+    // slf4j: logging facade and implementation
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    runtime 'org.slf4j:slf4j-simple:1.7.12'
+
+    // afterburner.mfx - MVP framework with Convention over Configuration, IoC and Dependency Injection for JavaFX
+    compile 'com.airhacks:afterburner.mfx:1.6.2'
+}
+
+mainClassName = 'org.test.afterburnermfxtest.Main'
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'org.test.afterburnermfxtest.Main'
+}
+
+jar {
+    manifest { 
+        attributes "Main-Class": "$mainClassName"
+    }  
+    
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.desktopRuntime.collect() { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+jfxmobile {
+    android {
+        manifest = 'src/android/AndroidManifest.xml'
+        compileSdkVersion = '22'
+    }
+    ios {
+        infoPList = file('src/ios/Default-Info.plist')
+        forceLinkClasses = ['com.airhacks.afterburner.**.*']
+    }
+}

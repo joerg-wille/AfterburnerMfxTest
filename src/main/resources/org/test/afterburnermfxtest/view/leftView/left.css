@@ -1,0 +1,9 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.leftView {
+    -fx-background-color: red;
+    -fx-background-radius: 6;
+    -fx-background-insets: 10;
+}
